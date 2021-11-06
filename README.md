@@ -6,11 +6,11 @@ This is a serverless, progressive web application (PWA) built with React using a
 
 ## Key Features
 
-1.Filter events by city.
-2.Show/hide event details.
-3.Specify number of events.
-4.Use the app when offline.
-6.View a chart showing the number of upcoming events by city.
+1. Filter events by city.
+2. Show/hide event details.
+3. Specify number of events.
+4. Use the app when offline.
+6. View a chart showing the number of upcoming events by city.
 
 ## User Stories and Scenarios
 
