@@ -4,12 +4,19 @@
 /node_modules
 /.pnp
 .pnp.js
+jspm_packages
 
 # testing
 /coverage
 
 # production
 /build
+
+# environment-variables
+config.json
+
+# serverless-directories
+.serverless
 
 # misc
 .DS_Store
