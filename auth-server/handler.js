@@ -31,13 +31,11 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 
 /**
- *
  * The first step in the OAuth process is to generate a URL so users can log in with
  * Google and be authorized to see your calendar. After logging in, they’ll receive a code
  * as a URL parameter.
- *
  */
- module.exports.getAuthURL = async () => {
+module.exports.getAuthURL = async () => {
   /**
    * Scopes array passed to the `scope` option. Any scopes passed must be enabled in the
    * "OAuth consent screen" settings in your project on your Google Console. Also, any passed
@@ -57,4 +55,45 @@ const oAuth2Client = new google.auth.OAuth2(
       authUrl: authUrl,
     }),
   };
+};
+
+// to get the access token
+module.exports.getAccessToken = async (event) => {
+ 
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+  // Decode authorization code extracted from the URL query
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
+
+  return new Promise((resolve, reject) => {
+    /**
+     *  Exchange authorization code for access token with a “callback” after the exchange,
+     *  The callback in this case is an arrow function with the results as parameters: “err” and “token.”
+     */
+
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(token);
+    });
+  })
+    .then((token) => {
+      // Respond with OAuth token 
+      return {
+        statusCode: 200,
+        body: JSON.stringify(token),
+      };
+    })
+    .catch((err) => {
+      // Handle error
+      console.error(err);
+      return {
+        statusCode: 500,
+        body: JSON.stringify(err),
+      };
+    });
 };
