@@ -1,13 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import EventList from './EventList';
 
-function App() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <EventList />
+      </div>
+    );
+  }
 }
+
 
 export default App;
