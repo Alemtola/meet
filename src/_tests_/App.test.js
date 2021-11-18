@@ -32,9 +32,6 @@ describe('<App /> component', () => {
 // integration test
 describe('<App/> integration', () => {
 
-  
-  describe('<App /> integration', () => {
-
     // test to make sure EventList gets events as a prop from App
     test('App passes "events" state as a prop to EventList', () => {
       const AppWrapper = mount(<App />);
@@ -52,7 +49,6 @@ describe('<App/> integration', () => {
       expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
       AppWrapper.unmount();
     });
-  });
 
   //  test when selecting one of the suggestions displays the correct list of events for the selected city
   test('get list of events matching the city selected by the user', async () => {
