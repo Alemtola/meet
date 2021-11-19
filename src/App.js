@@ -13,7 +13,7 @@ class App extends Component {
     events: [],
     locations: [],
     currentLocation: 'all',
-    numberOfEvents: 32,
+    numberOfEvents: 16,
     errorText: "",
   }
 
@@ -31,11 +31,11 @@ class App extends Component {
   }
 
   updateEventCount = async (e) => {
-    const newNumber = e.target.value ? parseInt(e.target.value) : 32;
+    const newNumber = e.target.value ? parseInt(e.target.value) : 16;
 
-    if (newNumber < 1 || newNumber > 32) {
+    if (newNumber < 1 || newNumber > 16) {
       await this.setState({
-        errorText: "Select number between 1 and 32",
+        errorText: "Select number between 1 and 16",
       });
     } else {
       await this.setState({
