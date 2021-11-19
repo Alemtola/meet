@@ -74,11 +74,11 @@ that I can see more or fewer events in the events list at once.
 
 #### Scenarios
 
-**Scenario 1: When user hasn’t specified a number, 32 is the default number**
+**Scenario 1: When user hasn’t specified a number, 16 is the default number**
 
-- Given the user has searched for events 
+- Given the user is on the main page
 - When the user does not specify number of events
-- Then the user should see 32 events by default
+- Then the user should see 16 events by default
 
 **Scenario 2: User can change the number of events they want to see**
 
