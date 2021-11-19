@@ -8,6 +8,16 @@
   box-sizing: border-box;
 }
 
+.App-logo {
+  text-align: center;
+}
+
+.App-logo img{
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -36,7 +46,7 @@ input[type="number"] {
   height: 38px;
 }
 
-.city {
+.city, .number-of-events {
   width: 250px;
 }
 
@@ -55,7 +65,7 @@ input[type="number"] {
   z-index: 2;
   align-self: center;
   margin: 0;
-  top: 43px;
+  top: 63px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -73,7 +83,7 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: #f3a9a97e;
 }
 
 .event {
@@ -85,14 +95,16 @@ input[type="number"] {
   position: relative;
 }
 
-.details-btn {
+.show-details, .hide-details {
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
-  border-radius: 4px;
+  margin-top: 5px;
+  padding: 8px 8px;
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
+  background-image: linear-gradient(360deg, #d26742,#dbe7f0 );
 }
 
 .name {
@@ -115,7 +127,7 @@ input[type="number"] {
 }
 
 .NumberOfEvents {
-  width: 200px;
+  width: 250px;
   margin: 60px auto;
   text-align: center;
 }
