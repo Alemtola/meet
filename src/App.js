@@ -8,30 +8,32 @@ import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import Container from 'react-bootstrap/Container'
 
+
 class App extends Component {
 
+
   state = {
+
     events: [],
     locations: [],
     currentLocation: 'all',
-    numberOfEvents: 16,
-    errorText: "",
+    numberOfEvents: 16
   }
 
-
-
-  updateEvents = (location, eventCount) => {
+ 
+  
+  updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ? events : events.filter((event) => event.location === location);
-      const shownEvents = locationEvents.slice(0, eventCount);
+      const { numberOfEvents } = this.state;
       this.setState({
-        events: shownEvents,
-        currentLocation: location
+        events: locationEvents.slice(0, numberOfEvents)
       });
     });
   }
 
-  updateEventCount = async (e) => {
+  
+  /*updateEventCount = async (e) => {
     const newNumber = e.target.value ? parseInt(e.target.value) : 16;
 
     if (newNumber < 1 || newNumber > 16) {
@@ -45,7 +47,16 @@ class App extends Component {
       });
       this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
     }
-  };
+  }*/
+
+  updateNumberOfEvents = (eventCount) => {
+    const { currentLocation } = this.state;
+    this.setState({
+      numberOfEvents: eventCount
+    });
+    this.updateEvents(currentLocation, eventCount);
+  }
+  
 
   componentDidMount() {
     this.mounted = true;
@@ -54,14 +65,14 @@ class App extends Component {
         this.setState({ events, locations: extractLocations(events) });
       }
     });
-  }
+  };
 
   componentWillUnmount(){
     this.mounted = false;
   }
 
-  render() {
-    const { numberOfEvents } = this.state;
+  render(){
+    
     return (
       <Container>
         <div className="App">
@@ -75,9 +86,8 @@ class App extends Component {
             updateEvents={this.updateEvents}/>
 
           <NumberOfEvents 
-            numberOfEvents={numberOfEvents} 
-            updateEventCount={this.updateEventCount} 
-            errorText={this.state.errorText}/>
+            numberOfEvents={this.state.numberOfEvents} 
+            updateNumberOfEvents={this.updateNumberOfEvents} />
           
           <EventList events={this.state.events} />
     
@@ -85,6 +95,7 @@ class App extends Component {
       </Container>
     );
   }
+ 
 }
 
 
