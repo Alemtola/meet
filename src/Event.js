@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from 'react-bootstrap/Button'
 
 class Event extends Component {
 
@@ -29,12 +30,12 @@ class Event extends Component {
           @{event.summary} | {event.location}
         </p>
 
-        <button
+        <Button variant="outline-info"
           className={`${collapsed ? "show" : "hide"}-details`}
           onClick={this.handleClick}
         >
           {collapsed ? "Show Details" : "Hide Details"}
-        </button>
+        </Button>
 
         {!collapsed &&
             <div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>

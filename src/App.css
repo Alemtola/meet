@@ -14,13 +14,8 @@
 
 .App-logo img{
   margin: 0 auto;
-  width: 250px;
-  height: 250px;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
+  width: 200px;
+  height: 200px;
 }
 
 p {
@@ -75,6 +70,7 @@ input[type="number"] {
   padding: 8px 6px 8px 10px;
   background-color: #eee;
   cursor: default;
+  list-style: none;
 }
 
 .suggestions > li:last-child {
@@ -86,25 +82,43 @@ input[type="number"] {
   background-color: #f3a9a97e;
 }
 
+.event-list-wrapper{
+  background-color: rgba(0, 0, 0, 0.198);
+  padding: 20px 15px;
+  border-radius: 15px;
+  text-align: left;
+}
+
 .event {
   padding: 10px 10px 35px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-align: left;
-  border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  color: #eee;
+  background-image: linear-gradient(45deg,#cf5a33c2,#2368a8af );
+  box-shadow: 5px 5px 10px rgba(218, 210, 210, 0.479);
+}
+
+.location, .event-description {
+  margin-bottom: 20px;
+}
+
+.extra-details a{
+  color: rgb(134, 192, 240);
 }
 
 .show-details, .hide-details {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  left: 8px;
+  bottom: 10px;
   margin-top: 5px;
-  padding: 8px 8px;
-  border-radius: 5px;
+  padding: 6px 8px;
+  border-radius: 8px;
   outline: none;
   cursor: pointer;
-  background-image: linear-gradient(360deg, #d26742,#dbe7f0 );
+  color: #eee;
+  background-color:rgba(4, 121, 255, 0.116);
 }
 
 .name {
