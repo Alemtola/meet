@@ -10,6 +10,7 @@
 
 .App-logo {
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .App-logo img{
@@ -45,9 +46,14 @@ input[type="number"] {
   width: 250px;
 }
 
+.city-input{
+  margin-bottom: 0px;
+}
+
 .CitySearch {
   display: flex;
   flex-direction: column;
+  justify-items: center;
   flex-basis: 300px;
   max-width: 300px;
   margin: auto;
@@ -55,12 +61,13 @@ input[type="number"] {
 }
 
 .suggestions {
-  width: 250px;
+  width: 270px;
   position: absolute;
   z-index: 2;
   align-self: center;
-  margin: 0;
-  top: 63px;
+  margin-top: 10px;
+  top: 65px;
+  left:0px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -79,7 +86,7 @@ input[type="number"] {
 }
 
 .suggestions > li:hover {
-  background-color: #f3a9a97e;
+  background-color: #f3a9a9;
 }
 
 .event-list-wrapper{
@@ -152,11 +159,6 @@ input[type="number"] {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {
