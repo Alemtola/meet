@@ -7,6 +7,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import Container from 'react-bootstrap/Container'
+import { InfoAlert } from './Alert';
 
 
 class App extends Component {
@@ -31,23 +32,6 @@ class App extends Component {
       });
     });
   }
-
-  
-  /*updateEventCount = async (e) => {
-    const newNumber = e.target.value ? parseInt(e.target.value) : 16;
-
-    if (newNumber < 1 || newNumber > 16) {
-      await this.setState({
-        errorText: "Select number between 1 and 16",
-      });
-    } else {
-      await this.setState({
-        errorText: "",
-        numberOfEvents: newNumber,
-      });
-      this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
-    }
-  }*/
 
   updateNumberOfEvents = (eventCount) => {
     const { currentLocation } = this.state;
@@ -79,6 +63,7 @@ class App extends Component {
        
           <div className="App-logo" >
             <img src={logo} alt="meet app logo"/>
+            { !navigator.onLine ? (<InfoAlert text='You are offline!' />) : (<InfoAlert text=' ' />)}
           </div>
 
           <CitySearch 
