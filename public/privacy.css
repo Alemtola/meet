@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(90deg, #d26742,#3aa0e4 );
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+section {
+  margin-top: 20px;
+}
+
+.main-content{
+  max-width: 800px;
+}
