@@ -1,6 +1,5 @@
 import React from "react";
 import './WelcomeScreen.css';
-import Container from 'react-bootstrap/Container';
 import logo from './images/logo.png';
 
 function WelcomeScreen(props) {
