@@ -5,9 +5,10 @@ import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import Container from 'react-bootstrap/Container'
 import { InfoAlert } from './Alert';
+import WelcomeScreen from './WelcomeScreen';
 
 
 class App extends Component {
@@ -18,7 +19,8 @@ class App extends Component {
     events: [],
     locations: [],
     currentLocation: 'all',
-    numberOfEvents: 16
+    numberOfEvents: 16,
+    showWelcomeScreen: undefined
   }
 
  
@@ -42,6 +44,7 @@ class App extends Component {
   }
   
 
+  /*
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
@@ -50,12 +53,31 @@ class App extends Component {
       }
     });
   };
+  */
+
+  async componentDidMount() {
+    this.mounted = true;
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+       if (this.mounted) {
+         this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+     }
+  }
+    
 
   componentWillUnmount(){
     this.mounted = false;
   }
 
   render(){
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
     
     return (
       <Container>
@@ -75,7 +97,14 @@ class App extends Component {
             updateNumberOfEvents={this.updateNumberOfEvents} />
           
           <EventList events={this.state.events} />
-    
+
+          <WelcomeScreen
+            showWelcomeScreen={this.state.showWelcomeScreen}
+            getAccessToken={() => {
+              getAccessToken();
+            }}
+          />
+
         </div>
       </Container>
     );
