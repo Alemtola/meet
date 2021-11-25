@@ -23,38 +23,6 @@ class App extends Component {
     showWelcomeScreen: undefined
   }
 
- 
-  
-  updateEvents = (location) => {
-    getEvents().then((events) => {
-      const locationEvents = (location === 'all') ? events : events.filter((event) => event.location === location);
-      const { numberOfEvents } = this.state;
-      this.setState({
-        events: locationEvents.slice(0, numberOfEvents)
-      });
-    });
-  }
-
-  updateNumberOfEvents = (eventCount) => {
-    const { currentLocation } = this.state;
-    this.setState({
-      numberOfEvents: eventCount
-    });
-    this.updateEvents(currentLocation, eventCount);
-  }
-  
-
-  /*
-  componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  };
-  */
-
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
@@ -74,6 +42,24 @@ class App extends Component {
 
   componentWillUnmount(){
     this.mounted = false;
+  }
+  
+  updateEvents = (location) => {
+    getEvents().then((events) => {
+      const locationEvents = (location === 'all') ? events : events.filter((event) => event.location === location);
+      const { numberOfEvents } = this.state;
+      this.setState({
+        events: locationEvents.slice(0, numberOfEvents)
+      });
+    });
+  }
+
+  updateNumberOfEvents = (eventCount) => {
+    const { currentLocation } = this.state;
+    this.setState({
+      numberOfEvents: eventCount
+    });
+    this.updateEvents(currentLocation, eventCount);
   }
 
   render(){
