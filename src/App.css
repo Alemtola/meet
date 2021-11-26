@@ -89,11 +89,12 @@ input[type="number"] {
   background-color: #f3a9a9;
 }
 
-.event-list-wrapper{
+.event-list-wrapper, .charts-wrapper{
   background-color: rgba(0, 0, 0, 0.198);
   padding: 20px 15px;
   border-radius: 15px;
-  text-align: left;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .event {
