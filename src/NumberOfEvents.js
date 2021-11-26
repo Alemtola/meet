@@ -22,22 +22,7 @@ class NumberOfEvents extends Component {
     }
     this.props.updateNumberOfEvents(event.target.value);
   };
-  /*updateEventCount = (event) => {
-    const newnumber = event.target.value;
-    if(newnumber < 1 || newnumber > 16) {
-      return this.setState({
-        numberOfEvents:newnumber,
-        errorText: 'Number should be between 1-16'
-      });
-    } else {
-        this.setState({
-          numberOfEvents: newnumber,
-          errorText: ''
-        });
-      this.props.updateEventCount(event.target.value);
-      }
-  };
-  */
+
 
   render() {
     return (
