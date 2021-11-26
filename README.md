@@ -10,17 +10,17 @@ This is a serverless, progressive web application (PWA) built with React using a
 
 <p>Login View: <br> Users can have access to the app by signning using their google account. </p>
 
-![login](images/loginView.PNG)
+![login](src/images/loginView.PNG)
 
 
 <p>Main View: <br> This is the main page where users search for events from different cities, define the number of events they want to see and display a chart to visualize the search data. </p>
 
-![login](images/mainView.PNG)
+![login](src/images/mainView.PNG)
 
 
 <p>Event List: <br> When Users click on 'Show Details' button, event detail is displayed. </p>
 
-![login](images/eventlist.PNG)
+![login](src/images/eventlist.PNG)
 
 ## Key Features
 
